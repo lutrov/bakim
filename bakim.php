@@ -6,7 +6,7 @@ Description: Simple maintenance mode plugin with a toggle in the adminbar. Why t
 Plugin URI: https://github.com/lutrov/bakim
 Author: Ivan Lutrov
 Author URI: http://lutrov.com/
-Version: 1.0
+Version: 1.2
 */
 
 defined('ABSPATH') || die();
@@ -46,53 +46,66 @@ function bakim_template_html($atts) {
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $atts['language']; ?>">
-<head>
-<meta charset="<?php echo $atts['charset']; ?>">
-<meta name="viewport" content="width=device-width">
-<meta name="robots" content="noindex,nofollow">
-<link href="<?php echo $atts['icon']['guid']; ?>" type="<?php echo $atts['icon']['type']; ?>" rel="icon">
-<title><?php echo $atts['title']; ?></title>
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-html {
-	margin: 0;
-	background: slategray url(<?php echo $atts['background']; ?>) center center fixed;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-blend-mode: overlay;
-	padding: 0;
-}
-@media screen and (max-width: 800px) {
-	html {
-		background-size: 1920px 1280px;
-	}
-}
-body {
-	margin: 0;
-	padding: 0;
-	background: none;
-	box-shadow: none;
-	color: white;
-}
-p {
-	margin: 0;
-	padding: 0;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font: normal bold 32px/1.1 Montserrat, sans-serif;
-	text-align: center;
-}
-img {
-	display: block;
-	margin: 0 auto;
-}
-</style>
-</head>
-<body>
-<p><img src="<?php echo $atts['logo']['guid']; ?>" title="<?php echo $atts['sitename']; ?>"><br><?php echo $atts['message']; ?></p>
-</body>
+	<head>
+		<meta charset="<?php echo $atts['charset']; ?>">
+		<meta name="viewport" content="width=device-width">
+		<meta name="robots" content="noindex, follow">
+		<link href="<?php echo $atts['icon']['guid']; ?>" type="<?php echo $atts['icon']['type']; ?>" rel="icon">
+		<title><?php echo $atts['title']; ?></title>
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css?family=Montserrat');
+			html {
+				margin: 0;
+				background: dimgray;
+				padding: 0;
+			}
+			@media screen and (min-width: 740px) {
+				html {
+					background: dimgray url(<?php echo $atts['background']; ?>) center center fixed;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-blend-mode: overlay;
+				}
+			}
+			body {
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				background: none;
+				box-shadow: none;
+				color: white;
+			}
+			section {
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			p {
+				padding: 20px;
+				background-color: rgba(40, 40, 40, .8);
+				font: normal bold 32px/1.1 Montserrat, sans-serif;
+				text-align: center;
+			}
+			a {
+				text-decoration: underline;
+			}
+			img {
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<?php if (empty($atts['logo']['guid']) == false): ?>
+				<a href="<?php echo home_url(); ?>" title="<?php echo $atts['sitename']; ?>"><img src="<?php echo $atts['logo']['guid']; ?>"></a>
+			<?php endif; ?>
+			<p><?php echo $atts['message']; ?></p>
+		</section>
+	</body>
 </html>
 <?php
 }
