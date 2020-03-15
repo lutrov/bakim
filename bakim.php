@@ -19,10 +19,6 @@ function bakim_header_action() {
 	if (current_user_can('administrator') == false) {
 		$maintenance = get_option('bakim_maintenance_mode');
 		if (empty($maintenance) == false) {
-			if (headers_sent() == false) {
-				header('HTTP/1.1 503 Service Unavailable');
-				header('Content-Type: text/html; charset=utf-8');
-			}
 			$atts = array(
 				'title' => __('Website Under Maintenance'),
 				'language' => get_option('WPLANG'),
@@ -33,6 +29,10 @@ function bakim_header_action() {
 				'background' => sprintf('%s/images/background.jpg', plugins_url(null, __FILE__)),
 				'message' => __('We are performing <em>scheduled maintenance</em> and will be back online shortly!')
 			);
+			if (headers_sent() == false) {
+				header('HTTP/1.1 503 Service Unavailable');
+				header('Content-Type: text/html; charset=' . $atts['charset']);
+			}
 			bakim_template_html($atts);
 			die();
 		}
