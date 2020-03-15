@@ -18,7 +18,7 @@ add_action('get_header', 'bakim_header_action', 10, 0);
 function bakim_header_action() {
 	if (current_user_can('administrator') == false) {
 		$maintenance = get_option('bakim_maintenance_mode');
-		if (strlen($maintenance) > 0) {
+		if (empty($maintenance) == false) {
 			if (headers_sent() == false) {
 				header('HTTP/1.1 503 Service Unavailable');
 				header('Content-Type: text/html; charset=utf-8');
