@@ -2,11 +2,26 @@
 
 /*
 Plugin Name: Bakim
+Version: 1.4
 Description: Simple maintenance mode plugin with a toggle in the adminbar. Why this plugin name? Bakim means "maintenance" in Turkish.
 Plugin URI: https://github.com/lutrov/bakim
+Copyright: 2020, Ivan Lutrov
 Author: Ivan Lutrov
-Author URI: http://lutrov.com/
-Version: 1.2
+Author URI: http://lutrov.com
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+Street, Fifth Floor, Boston, MA 02110-1301, USA. Also add information on how to
+contact you by electronic and paper mail.
 */
 
 defined('ABSPATH') || die();
@@ -53,7 +68,6 @@ function bakim_template_html($atts) {
 		<link href="<?php echo $atts['icon']['guid']; ?>" type="<?php echo $atts['icon']['type']; ?>" rel="icon">
 		<title><?php echo $atts['title']; ?></title>
 		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css?family=Montserrat');
 			html {
 				margin: 0;
 				background: dimgray;
@@ -86,7 +100,7 @@ function bakim_template_html($atts) {
 			p {
 				padding: 20px;
 				background-color: rgba(40, 40, 40, .8);
-				font: normal bold 32px/1.1 Montserrat, sans-serif;
+				font: normal bold 32px/1.1 Helvetica, Arial, sans-serif;
 				text-align: center;
 			}
 			a {
