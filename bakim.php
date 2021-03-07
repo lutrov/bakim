@@ -63,9 +63,9 @@ function bakim_template_html($atts) {
 <html lang="<?php echo $atts['language']; ?>">
 	<head>
 		<meta charset="<?php echo $atts['charset']; ?>">
-		<meta name="kurac" content="mine">
 		<meta name="viewport" content="width=device-width">
 		<meta name="robots" content="noindex, follow">
+		<meta http-equiv="refresh" content="300;URL=<?php echo $_SERVER['REQUEST_URI']; ?>">
 		<link href="<?php echo $atts['icon']['guid']; ?>" type="<?php echo $atts['icon']['type']; ?>" rel="icon">
 		<title><?php echo $atts['title']; ?></title>
 		<style type="text/css">
