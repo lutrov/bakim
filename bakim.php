@@ -63,6 +63,7 @@ function bakim_template_html($atts) {
 <html lang="<?php echo $atts['language']; ?>">
 	<head>
 		<meta charset="<?php echo $atts['charset']; ?>">
+		<meta name="kurac" content="mine">
 		<meta name="viewport" content="width=device-width">
 		<meta name="robots" content="noindex, follow">
 		<link href="<?php echo $atts['icon']['guid']; ?>" type="<?php echo $atts['icon']['type']; ?>" rel="icon">
@@ -73,7 +74,7 @@ function bakim_template_html($atts) {
 				background: dimgray;
 				padding: 0;
 			}
-			@media screen and (min-width: 740px) {
+			@media screen and (min-width: 360px) {
 				html {
 					background: dimgray url(<?php echo $atts['background']; ?>) center center fixed;
 					background-size: cover;
