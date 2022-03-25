@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Bakim
-Version: 1.4
+Version: 1.5
 Description: Simple maintenance mode plugin with a toggle in the adminbar. Why this plugin name? Bakim means "maintenance" in Turkish.
 Plugin URI: https://github.com/lutrov/bakim
 Copyright: 2020, Ivan Lutrov
@@ -27,6 +27,12 @@ contact you by electronic and paper mail.
 defined('ABSPATH') || die();
 
 //
+// Configurable constants used by this plugin.
+//
+define('BAKIM_MAINTENANCE_MESSAGE', 'We are performing <em>scheduled maintenance</em> and will be back online shortly!');
+define('BAKIM_MAINTENANCE_TITLE', 'Website Under Maintenance');
+
+//
 // Activate maintenance mode.
 //
 add_action('get_header', 'bakim_header_action', 10, 0);
@@ -35,14 +41,14 @@ function bakim_header_action() {
 		$maintenance = get_option('bakim_maintenance_mode');
 		if (empty($maintenance) == false) {
 			$atts = array(
-				'title' => __('Website Under Maintenance'),
-				'language' => get_option('WPLANG'),
+				'title' => BAKIM_MAINTENANCE_TITLE,
+				'language' => get_locale(),
 				'charset' => get_option('blog_charset'),
 				'sitename' => get_option('blogname'),
 				'icon' => bakim_site_image('icon'),
 				'logo' => bakim_site_image('logo'),
 				'background' => sprintf('%s/images/background.jpg', plugins_url(null, __FILE__)),
-				'message' => __('We are performing <em>scheduled maintenance</em> and will be back online shortly!')
+				'message' => BAKIM_MAINTENANCE_MESSAGE
 			);
 			if (headers_sent() == false) {
 				header('HTTP/1.1 503 Service Unavailable');
